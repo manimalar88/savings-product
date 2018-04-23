@@ -1,12 +1,12 @@
-package com.ing.product.app;
+package com.ing.product;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
-@ComponentScan("com.ing.product")
+
+
 @SpringBootApplication
 public class ProductApp {	
 	
@@ -21,5 +21,5 @@ public class ProductApp {
 	    return new RestTemplate();
 	}
 	
-	
+
 }

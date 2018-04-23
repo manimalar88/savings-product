@@ -13,7 +13,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
-import com.ing.product.app.ProductApp;
+import com.ing.product.ProductApp;
 
 @ContextConfiguration(classes = ProductApp.class)
 @WebAppConfiguration
