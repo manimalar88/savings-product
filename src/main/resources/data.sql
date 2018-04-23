@@ -11,3 +11,4 @@ insert into t_customer values(24,'Ken','ken@hcl.com');
 insert into t_customer_product values(21, 13);
 insert into t_customer_product values(22, 14);
 insert into t_customer_product values(22, 11);
+insert into t_customer_product values(24,13);

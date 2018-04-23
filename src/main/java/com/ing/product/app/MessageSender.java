@@ -36,7 +36,7 @@ public class MessageSender {
 			  		"   <soap:Body>\r\n" + 
 			  		"      <sch:ComplianceRequest>\r\n" + 
 			  		"         <sch:CustomerID>" + id +
-			  		"         </sch:CustomerID>\r\n" +
+			  		"</sch:CustomerID>\r\n" +
 			  		"      </sch:ComplianceRequest>\r\n" + 
 			  		"   </soap:Body>\r\n" + 
 			  		"</soap:Envelope>";
@@ -60,17 +60,23 @@ public class MessageSender {
 				}catch(Exception ex) {
 					ex.printStackTrace();
 				}
+				System.out.println("input:"+inputMessage);  
 				return inputMessage;
 			}
 		});
 	    }catch(Exception ex) {
 	    	ex.printStackTrace();
 	    }
+	      
+	   
 	   
 	    Message messageOutput =  jmsTemplate.receiveSelected(destination, "JMSCorrelationID = '"
                 + corelationId + "'");
 	    String extractBody = messageOutput.getBody(String.class);
-	    return Boolean.valueOf(extractBody.substring(extractBody.indexOf("<ns0:isCompliant>")+17, extractBody.indexOf("</ns0:isCompliant>")));
+	    System.out.println("output:"+extractBody);
+	    String extractedOutput = extractBody.substring(extractBody.indexOf("<ns0:isCompliant>")+17, extractBody.indexOf("</ns0:isCompliant>"));
+	    System.out.println("output:"+extractedOutput);
+	    return Boolean.valueOf(extractedOutput);
 	  }	
 	  
 	  

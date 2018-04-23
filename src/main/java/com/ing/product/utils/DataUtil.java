@@ -11,7 +11,7 @@ import com.ing.product.model.ProductType;
 
 public class DataUtil {
 
-	public final static List<Product> PRODUCT_LIST = Arrays.asList(new Product("Savings-silver",ProductType.SAVINGS),new Product("Current-silver",ProductType.CURRENT),
+	/*public final static List<Product> PRODUCT_LIST = Arrays.asList(new Product("Savings-silver",ProductType.SAVINGS),new Product("Current-silver",ProductType.CURRENT),
 			new Product("Savings-Gold",ProductType.SAVINGS),new Product("Current-Gold",ProductType.CURRENT));
 	
 	public final static List<Customer> CUSTOMER_LIST = Arrays.asList(new Customer(11111L,"Alex","alex@ing.com"),new Customer(2222L,"Charlie","charlie@ing.com"),
@@ -23,7 +23,7 @@ public class DataUtil {
 			put("ING-11111", Arrays.asList(new Product("Current-Gold",ProductType.CURRENT)));
 		}
 		
-	};
+	};*/
 	
 	
 }

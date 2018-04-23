@@ -6,10 +6,12 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -91,8 +93,8 @@ public class ProductController {
 		return COUNTRY_CODE + CHECK_DIGITS + BANK_ID + String.valueOf(number);
 	}
 	
-	@PostMapping("/{customerId}")
-	public ResponseEntity<?> addProduct(@PathVariable Long customerId, Product product) throws Exception{
+	@PostMapping( value = "/{customerId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> addProduct(@PathVariable Long customerId,@RequestBody Product product) throws Exception{
 		Optional<Customer> customer = customerRepo.findById(customerId);
 		if(!customer.isPresent()) {
 			throw new Exception("No customer found");
@@ -104,6 +106,10 @@ public class ProductController {
 				throw new Exception("Current product is not exist");
 			}else {
 				validateCompliance(customerId);
+				product = productRepo.findById(product.getId()).get();
+				if(product == null) {
+					throw new Exception("Product is not exist");
+				}
 				customer.get().addProduct(product);
 				customerRepo.save(customer.get());
 			}

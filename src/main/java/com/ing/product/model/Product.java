@@ -12,10 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "T_PRODUCT")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class , property = "id") 
 public class Product implements Serializable{
 	
 	/**
@@ -33,11 +35,11 @@ public class Product implements Serializable{
 	private ProductType type;
 	
 	 @ManyToMany(mappedBy = "products")
-	 @JsonBackReference
 	 private Set<Customer> customers = new HashSet<>();
 	
-	public Product(String name, ProductType type) {
+	public Product(Long id, String name, ProductType type) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.type = type;
 	}

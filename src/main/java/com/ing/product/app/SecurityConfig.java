@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().httpBasic()
                 .and()
                 .csrf().disable();
+        http.headers().frameOptions().disable();
     }
 
     @Autowired

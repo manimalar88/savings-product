@@ -37,13 +37,13 @@ public class ProductControllerTest {
 	public void setUp() {
 		existingCurrent = new Customer(1l,"Test 1","test@hcl.com");
 		nonExistingProducts = new Customer(1l,"Test 1","test@hcl.com");
-		productCurrent = new Product("Current-Test",ProductType.CURRENT);
+		productCurrent = new Product(2l,"Current-Test",ProductType.CURRENT);
 		existingCurrent.addProduct(productCurrent);
 		
 		existingProducts.add(productCurrent);
 		
 		existingSavings = new Customer(1l,"Test 1","test@hcl.com");
-		productSavings = new Product("Savings-Test",ProductType.SAVINGS);
+		productSavings = new Product(3l,"Savings-Test",ProductType.SAVINGS);
 		existingSavings.addProduct(productSavings);
 		
 	}
